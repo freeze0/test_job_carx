@@ -3,7 +3,6 @@ using UnityEngine;
 public class CloudMove : MonoBehaviour
 {
     [SerializeField] public Vector3 startPos;
-    [SerializeField] public Vector3 currentPos;
     [SerializeField] public Vector3 endPos;
     [SerializeField] public Transform[] positions;
     [SerializeField] public float speed;
