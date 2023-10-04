@@ -7,6 +7,7 @@ namespace TestXlab {
     {
         [SerializeField] private StoneSpawner spawner;
         [SerializeField] private NewCloudMove newCloudMove;
+        [SerializeField] private ToolSwapper toolSwapper;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.X)) 
@@ -17,6 +18,10 @@ namespace TestXlab {
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 newCloudMove.Action();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                toolSwapper.SwapTools();
             }
         }
 }
