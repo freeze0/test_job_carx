@@ -121,14 +121,14 @@ Material:
     - _EnvironmentReflections: 1
     - _Frequency: 2
     - _GlossMapScale: 0.85
-    - _Glossiness: 0.235
+    - _Glossiness: 0.28
     - _GlossyReflections: 1
     - _InvFade: 1
     - _MainAlpha: 0.5
-    - _Metallic: 0.24
+    - _Metallic: 0.25
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.9
+    - _Opacity: 0.5
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
