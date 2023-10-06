@@ -8,7 +8,7 @@ public class ToolSwapper : MonoBehaviour
     [SerializeField] private GameObject[] dummies;
 
     public void SwapTools()
-    {
+    {       
         Debug.Log("Swaping Tools");
         for (int i = 0; i < dummies.Length; i++)
         {
