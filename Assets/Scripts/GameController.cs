@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 //name space TestXlab.Controllers дл€ разграничивани€ использовани€ скриптов
@@ -7,7 +8,7 @@ namespace TestXlab {
     {
         [SerializeField] private StoneSpawner spawner;
         [SerializeField] private NewCloudMove newCloudMove;
-        [SerializeField] private ToolSwapper toolSwapper;
+        public List<Villager> villagers;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.X)) 
@@ -21,7 +22,11 @@ namespace TestXlab {
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                toolSwapper.SwapTools();
+                Debug.Log("Space key down");
+                foreach (var villager in villagers)
+                {
+                    villager.ChangeTool();
+                }
             }
         }
 }
