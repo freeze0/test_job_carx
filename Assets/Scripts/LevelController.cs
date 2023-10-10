@@ -9,7 +9,6 @@ namespace Golf
     public class LevelController : MonoBehaviour
     {
         public StoneSpawner spawner;
-        public bool isGameOver = false;
         
         private float m_lastspawnedTime = 0;
 
@@ -40,7 +39,6 @@ namespace Golf
         private void GameOver()
         {
             Debug.Log("Game over");
-            isGameOver = true;
             enabled = false;
         }
 
