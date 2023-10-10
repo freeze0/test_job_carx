@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace Golf 
@@ -9,25 +10,56 @@ namespace Golf
     {
         public StoneSpawner spawner;
         public bool isGameOver = false;
-        public float delay = 0.5f;
-        // private float m_lastspawnedTime = 0;
+        
+        private float m_lastspawnedTime = 0;
 
-        void Start()
+        public float delayMax = 2f;
+        public float delayMin = 0.5f;
+        public float delayStep = 0.1f;
+
+        private float m_delay = 0.5f;
+
+
+        private void Start()
         {
-            StartCoroutine(SpawnStoneProc());
-            // m_lastspawnedTime = Time.time;
+            //StartCoroutine(SpawnStoneProc());
+            m_lastspawnedTime = Time.time;
+            RefreshDelay();
         }
 
-        /*private void Update()
+        private void OnEnable()
         {
-            if (isGameOver)
-            {
-                if (m_lastspawnedTime + delay > Time.time)
-                    m_lastspawnedTime = Time.time;
-            }
-        }*/
+            Stone.onCollisionStone += GameOver;
+        }
 
-        private IEnumerator SpawnStoneProc()
+        private void OnDisable()
+        {
+            Stone.onCollisionStone -= GameOver;
+        }
+
+        private void GameOver()
+        {
+            Debug.Log("Game over");
+            isGameOver = true;
+            enabled = false;
+        }
+
+        private void Update()
+        {
+            if (Time.time >= m_lastspawnedTime + m_delay) { 
+                spawner.Spawn();
+                m_lastspawnedTime = Time.time;
+                RefreshDelay(); 
+            }
+        }
+
+        public void RefreshDelay()
+        {
+            m_delay = UnityEngine.Random.Range(delayMax, delayMin);
+            delayMax = Mathf.Max(delayMax, delayMin - delayStep);
+        }
+
+        /*private IEnumerator SpawnStoneProc()
         {
             do
             {
@@ -35,6 +67,6 @@ namespace Golf
                 spawner.Spawn();
             }
             while (!isGameOver);
-        }
+        }*/
     }
 }
