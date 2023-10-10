@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Golf { 
+namespace Golf 
+{ 
     public class PlayerController : MonoBehaviour
     {
         // Start is called before the first frame update
