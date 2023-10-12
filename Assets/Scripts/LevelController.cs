@@ -29,13 +29,13 @@ namespace Golf
         private void OnEnable()
         {
             Stone.onCollisionStone += GameOver;
-            Plow.onHit += HitCounts;
+            Player.onHit += HitCounts;
         }
 
         private void OnDisable()
         {
             Stone.onCollisionStone -= GameOver;
-            Plow.onHit -= HitCounts;
+            Player.onHit -= HitCounts;
         }
 
         private void GameOver()

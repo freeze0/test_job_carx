@@ -13,6 +13,7 @@ namespace Golf
         public float power = 50f;
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
+        public static System.Action onHit;
         
         private void Update()
         {
@@ -36,6 +37,7 @@ namespace Golf
                 
                 if (collider.TryGetComponent(out Stone stone))
                 {
+                    onHit?.Invoke();
                     stone.isAfect = true;
                 }
             }
