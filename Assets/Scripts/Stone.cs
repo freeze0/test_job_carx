@@ -17,9 +17,10 @@ namespace Golf
             {
                 if (!other.isAfect)
                 {
-                    onCollisionStone?.Invoke(); // ?. проверка на нулевой элемент 
+                    onCollisionStone?.Invoke(); // вызов ?. проверка на нулевого слушателя
                 }
             }
+            
         }
     }
 

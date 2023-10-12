@@ -6,25 +6,24 @@ namespace Golf
 {
     public class Player : MonoBehaviour
     {
-        public Transform Plow;
-        public Transform Helper;
+        public Transform plow;
+        public Transform helper;
         public float range = 50f;
         public float speed = 500f;
         public float power = 50f;
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
-
-
+        
         private void Update()
         {
-            m_lastPosition = Helper.position;
-            m_isDown =Input.GetMouseButton(0);
+            m_lastPosition = helper.position;
+            m_isDown = Input.GetMouseButton(0);
 
-            Quaternion rot = Plow.localRotation;
+            Quaternion rot = plow.localRotation;
             Quaternion toRot = Quaternion.Euler(0f, 0f, m_isDown ? range : -range);
             rot = Quaternion.RotateTowards(rot, toRot, speed*Time.deltaTime);
 
-            Plow.localRotation = rot;
+            plow.localRotation = rot;
         }
 
         public void OnCollisionStick(Collider collider)
@@ -32,7 +31,7 @@ namespace Golf
             if (collider.TryGetComponent(out Rigidbody body))
             {
                 /*var dir = m_isDown ? Plow.right: -Plow.right;*/
-                var dir = (Helper.position - m_lastPosition).normalized;
+                var dir = (helper.position - m_lastPosition).normalized;
                 body.AddForce(dir * power, ForceMode.Impulse);
                 
                 if (collider.TryGetComponent(out Stone stone))
@@ -40,6 +39,7 @@ namespace Golf
                     stone.isAfect = true;
                 }
             }
+            
             //Debug.Log(collider, this);
         }
 

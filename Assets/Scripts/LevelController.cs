@@ -15,7 +15,7 @@ namespace Golf
         public float delayMax = 2f;
         public float delayMin = 0.5f;
         public float delayStep = 0.1f;
-
+        public int count = 0;
         private float m_delay = 0.5f;
 
 
@@ -29,11 +29,13 @@ namespace Golf
         private void OnEnable()
         {
             Stone.onCollisionStone += GameOver;
+            Plow.onHit += HitCounts;
         }
 
         private void OnDisable()
         {
             Stone.onCollisionStone -= GameOver;
+            Plow.onHit -= HitCounts;
         }
 
         private void GameOver()
@@ -55,6 +57,12 @@ namespace Golf
         {
             m_delay = UnityEngine.Random.Range(delayMax, delayMin);
             delayMax = Mathf.Max(delayMax, delayMin - delayStep);
+        }
+
+        private void HitCounts()
+        {
+            count += 1;
+            Debug.Log("Hit count = " + count);
         }
 
         /*private IEnumerator SpawnStoneProc()

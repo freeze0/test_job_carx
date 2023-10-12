@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 867313193}
-  m_IndirectSpecularColor: {r: 0.19831213, g: 0.20776826, b: 0.21463186, a: 1}
+  m_IndirectSpecularColor: {r: 0.19830707, g: 0.20773569, b: 0.2146126, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8257,6 +8257,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1703863884}
     m_Modifications:
+    - target: {fileID: 1019362320417226, guid: 9f21020355643c74c88002634abcdabd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4303765770703250, guid: 9f21020355643c74c88002634abcdabd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -15269,10 +15273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 120501671}
-  isGameOver: 0
   delayMax: 2
   delayMin: 0.3
   delayStep: 0.05
+  count: 0
 --- !u!4 &1832238221
 Transform:
   m_ObjectHideFlags: 0
@@ -17634,8 +17638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6ca90f39f34804983c31bf0a8f267c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plow: {fileID: 2037565711}
-  Helper: {fileID: 568504011}
+  plow: {fileID: 2037565711}
+  helper: {fileID: 568504011}
   range: 30
   speed: 400
   power: 50
