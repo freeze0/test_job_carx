@@ -10,13 +10,17 @@ namespace Golf
     {
         public StoneSpawner spawner;
         
+        private List<GameObject> m_stones = new List<GameObject>(16);
+        
         private float m_lastspawnedTime = 0;
 
         public float delayMax = 2f;
         public float delayMin = 0.5f;
         public float delayStep = 0.1f;
-        public int count = 0;
+        public int highScore = 0;
         private float m_delay = 0.5f;
+        public int count = 0;
+        
 
 
         private void Start()
@@ -28,20 +32,21 @@ namespace Golf
 
         private void OnEnable()
         {
-            Stone.onCollisionStone += GameOver;
-            Player.onHit += HitCounts;
+            GameEvents.onCollisionStone += GameOver;
+            GameEvents.onStickHit += HitCounts;
         }
 
         private void OnDisable()
         {
-            Stone.onCollisionStone -= GameOver;
-            Player.onHit -= HitCounts;
+            GameEvents.onCollisionStone -= GameOver;
+            GameEvents.onStickHit -= HitCounts;
         }
 
         private void GameOver()
         {
             Debug.Log("Game over");
             enabled = false;
+
         }
 
         private void Update()
@@ -62,7 +67,18 @@ namespace Golf
         private void HitCounts()
         {
             count += 1;
+            highScore = highScore > count ? highScore : count;
             Debug.Log("Hit count = " + count);
+            Debug.Log("HighScore = " + highScore);
+
+        }
+
+        private void ClearStones()
+        {
+            foreach (GameObject stone in m_stones)
+            {
+                Destroy(stone);
+            }
         }
 
         /*private IEnumerator SpawnStoneProc()

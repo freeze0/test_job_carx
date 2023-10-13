@@ -7,7 +7,8 @@ namespace Golf
 {
     public class Stone : MonoBehaviour
     {
-        public static System.Action onCollisionStone;
+         // если пометить event то нельзя менять извне
+                                                       // только подписываться
 
         public bool isAfect = false;
 
@@ -17,7 +18,7 @@ namespace Golf
             {
                 if (!other.isAfect)
                 {
-                    onCollisionStone?.Invoke(); // вызов ?. проверка на нулевого слушателя
+                    GameEvents.CollisionStoneInvoke(this); //?.Invoke(); вызов ?. проверка на нулевого слушателя
                 }
             }
             

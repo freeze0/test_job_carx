@@ -13,18 +13,21 @@ namespace Golf
         public float power = 50f;
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
-        public static System.Action onHit;
         
         private void Update()
         {
             m_lastPosition = helper.position;
-            m_isDown = Input.GetMouseButton(0);
 
             Quaternion rot = plow.localRotation;
             Quaternion toRot = Quaternion.Euler(0f, 0f, m_isDown ? range : -range);
             rot = Quaternion.RotateTowards(rot, toRot, speed*Time.deltaTime);
 
             plow.localRotation = rot;
+        }
+
+        public void SetDown(bool value)
+        {
+            m_isDown=value;
         }
 
         public void OnCollisionStick(Collider collider)
@@ -37,7 +40,7 @@ namespace Golf
                 
                 if (collider.TryGetComponent(out Stone stone))
                 {
-                    onHit?.Invoke();
+                    GameEvents.StickHit();
                     stone.isAfect = true;
                 }
             }

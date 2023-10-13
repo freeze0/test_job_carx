@@ -6,16 +6,30 @@ namespace Golf
 { 
     public class PlayerController : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+
+        [SerializeField ]private Player player;
+
+        private void Start()
         {
-        
+            if ( player == null )
+            {
+                Debug.Log("Player is null");
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-        
+            player.SetDown(Input.GetMouseButton(0));
+        }
+
+        public void OnDown()
+        {
+            player.SetDown(true);
+        }
+
+        public void OnUp()
+        {
+            player.SetDown(false);
         }
     }
 }
