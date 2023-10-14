@@ -7,17 +7,17 @@ using UnityEngine;
         [SerializeField] private GameObject[] prefabs;
         [SerializeField] private Transform spawnPoint;
 
-        public void Spawn()
+        public GameObject Spawn()
         {
-            if (prefabs == null)
+            var prefab = GetRandomPrefab();
+            
+            if (prefab == null)
             {
-                Debug.Log("Prefab is null");
-                return;
+                Debug.Log("Spawner - Prefab is null");
+                return null;
             }
 
-            var prefab = GetRandomPrefab();
-            Debug.Log("Stone spawned");
-            GameObject.Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+            return Instantiate(prefab, transform.position, Quaternion.identity);
         }
 
         private GameObject GetRandomPrefab()
@@ -30,7 +30,6 @@ using UnityEngine;
             }
 
             int index = Random.Range(0, prefabs.Length);
-            var prefab = prefabs[index];
-            return prefab;
+            return prefabs[index];
         }
     }

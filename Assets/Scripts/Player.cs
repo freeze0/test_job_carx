@@ -8,9 +8,9 @@ namespace Golf
     {
         public Transform plow;
         public Transform helper;
-        public float range = 50f;
+        public float range = 30f;
         public float speed = 500f;
-        public float power = 50f;
+        public float power = 20f;
         private bool m_isDown = false;
         private Vector3 m_lastPosition;
         
@@ -34,14 +34,13 @@ namespace Golf
         {
             if (collider.TryGetComponent(out Rigidbody body))
             {
-                /*var dir = m_isDown ? Plow.right: -Plow.right;*/
                 var dir = (helper.position - m_lastPosition).normalized;
                 body.AddForce(dir * power, ForceMode.Impulse);
                 
-                if (collider.TryGetComponent(out Stone stone))
+                if (collider.TryGetComponent(out Stone stone) && !stone.isAfect)
                 {
-                    GameEvents.StickHit();
                     stone.isAfect = true;
+                    GameEvents.StickHit();
                 }
             }
             

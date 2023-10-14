@@ -7,9 +7,7 @@ namespace Golf
 {
     public class Stone : MonoBehaviour
     {
-         // если пометить event то нельзя менять извне
-                                                       // только подписываться
-
+         // если пометить event то нельзя менять извне только подписываться
         public bool isAfect = false;
 
         private void OnCollisionEnter(Collision collision)

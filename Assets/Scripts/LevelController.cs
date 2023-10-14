@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Golf 
 { 
@@ -19,40 +20,34 @@ namespace Golf
         public float delayStep = 0.1f;
         public int highScore = 0;
         private float m_delay = 0.5f;
-        public int count = 0;
+        [FormerlySerializedAs("count")] public int score = 0;
         
 
 
         private void Start()
         {
-            //StartCoroutine(SpawnStoneProc());
             m_lastspawnedTime = Time.time;
             RefreshDelay();
         }
 
         private void OnEnable()
         {
-            GameEvents.onCollisionStone += GameOver;
+            score = 0;
             GameEvents.onStickHit += HitCounts;
         }
 
         private void OnDisable()
         {
-            GameEvents.onCollisionStone -= GameOver;
+            
             GameEvents.onStickHit -= HitCounts;
-        }
-
-        private void GameOver()
-        {
-            Debug.Log("Game over");
-            enabled = false;
-
         }
 
         private void Update()
         {
-            if (Time.time >= m_lastspawnedTime + m_delay) { 
-                spawner.Spawn();
+            if (Time.time >= m_lastspawnedTime + m_delay)
+            {
+                var stone = spawner.Spawn();
+                m_stones.Add(stone);
                 m_lastspawnedTime = Time.time;
                 RefreshDelay(); 
             }
@@ -66,29 +61,22 @@ namespace Golf
 
         private void HitCounts()
         {
-            count += 1;
-            highScore = highScore > count ? highScore : count;
-            Debug.Log("Hit count = " + count);
+            score += 1;
+            highScore = Mathf.Max(highScore, score);
+            Debug.Log("Hit count = " + score);
             Debug.Log("HighScore = " + highScore);
 
         }
 
-        private void ClearStones()
+        public void ClearStones()
         {
-            foreach (GameObject stone in m_stones)
+            foreach (var stone in m_stones)
             {
                 Destroy(stone);
             }
-        }
 
-        /*private IEnumerator SpawnStoneProc()
-        {
-            do
-            {
-                yield return new WaitForSeconds(delay); // yield запоминает предыдущие состояния
-                spawner.Spawn();
-            }
-            while (!isGameOver);
-        }*/
+            m_stones.Clear();
+        }
+        
     }
 }

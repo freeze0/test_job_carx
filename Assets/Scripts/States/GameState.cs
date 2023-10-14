@@ -16,7 +16,7 @@ namespace Golf
 
         public void Exit()
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         protected virtual void OnEnable()
@@ -31,7 +31,7 @@ namespace Golf
         {
             foreach (var item in views)
             {
-                if (item != null) { 
+                if (item) { 
                     item.SetActive(false);
                 }
             }
