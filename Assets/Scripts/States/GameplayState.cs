@@ -9,7 +9,7 @@ namespace Golf
     public class GameplayState : GameState
     {
         public LevelController levelController;
-        public PlayerController playerController;
+        public TouchController plowController;
         public GameState gameOverState;
         public TMP_Text scoreText;
 
@@ -17,7 +17,7 @@ namespace Golf
         {
             base.OnEnable();
             levelController.enabled = true;
-            playerController.enabled = true;
+            plowController.enabled = true;
 
             GameEvents.onCollisionStones += OnGameOver;
             GameEvents.onStickHit += OnStickHit;
@@ -44,7 +44,7 @@ namespace Golf
             GameEvents.onCollisionStones -= OnGameOver;
             
             levelController.enabled = false;
-            playerController.enabled = false;
+            plowController.enabled = false;
 
         }
     }
