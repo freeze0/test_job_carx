@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Golf
+namespace MyGolf
 {
     public abstract class GameState : MonoBehaviour
     {

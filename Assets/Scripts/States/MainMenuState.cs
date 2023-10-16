@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using MyGolf;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Golf
+namespace MyGolf
 {
     public class MainMenuState : GameState
     {
-        public GameState gamePlayState;
-        public LevelController levelController;
-        public TMP_Text scoreText;
+        [SerializeField] private LevelController levelController;
+        [SerializeField] private GameplayState gameplayState;
+        [SerializeField] private TMP_Text scoreText;
 
         public void PlayGame()
         {
             Exit();
-            gamePlayState.Enter();
+            gameplayState.Enter();
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-
-            scoreText.text = $"HighScore: {levelController.highScore}";
+            scoreText.text = $"HighScore : {levelController.highScore}";
         }
     }
 }

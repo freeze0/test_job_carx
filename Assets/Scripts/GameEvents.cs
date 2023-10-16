@@ -4,23 +4,20 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace Golf
+namespace MyGolf
 {
     public static class GameEvents
     {
-        public static event System.Action onCollisionStones;
-        public static event System.Action onStickHit;
+       public static event System.Action onPlowHit;
 
+       public static void PlowHit()
+       {
+           onPlowHit?.Invoke();
+       }
 
-        public static void CollisionStoneInvoke(Stone stone)
-        {
-            onCollisionStones?.Invoke();
-        }
-
-        public static void StickHit()
-        {
-            onStickHit?.Invoke();
-        }
-
+       /*public static void OnCollisionEndPoint()
+       {
+           
+       }*/
     }
 }

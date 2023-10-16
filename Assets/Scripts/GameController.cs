@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Golf
+namespace MyGolf
 {
     public class GameController : MonoBehaviour
     {
-        
-
         public MainMenuState mainMenuState;
 
         private void Start()

@@ -4,48 +4,43 @@ using TMPro;
 using UnityEngine;
 
 
-namespace Golf
+namespace MyGolf
 {
+    
     public class GameplayState : GameState
     {
-        public LevelController levelController;
-        public TouchController plowController;
-        public GameState gameOverState;
+        [SerializeField] private LevelController levelController;
+        [SerializeField] private TouchController touchController;
+        [SerializeField] private GameOverState gameOverState;
         public TMP_Text scoreText;
-
         protected override void OnEnable()
         {
             base.OnEnable();
+            touchController.enabled = true;
             levelController.enabled = true;
-            plowController.enabled = true;
-
-            GameEvents.onCollisionStones += OnGameOver;
-            GameEvents.onStickHit += OnStickHit;
             
-            OnStickHit();
-
-        }
-        
-        private void OnStickHit()
-        {
-            scoreText.text = $"score : {levelController.score}";
+            GameEvents.onPlowHit += OnPlowHit;
+            
         }
 
-        private void OnGameOver()
+        private void OnGameEnded()
         {
             Exit();
             gameOverState.Enter();
         }
 
+        private void OnPlowHit()
+        {
+            scoreText.text = $"score : {levelController.hitCount}";
+        }
+
         protected override void OnDisable()
         {
             base.OnDisable();
-            
-            GameEvents.onCollisionStones -= OnGameOver;
-            
+            touchController.enabled = false;
             levelController.enabled = false;
-            plowController.enabled = false;
-
+            
+            GameEvents.onPlowHit -= OnPlowHit;
         }
     }
 }
