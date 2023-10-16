@@ -5,14 +5,15 @@ namespace MyGolf
 { 
     public class LevelController : MonoBehaviour
     {
-        [SerializeField] private SpawnStone spawnStone;
-        [SerializeField] private Camera mainCamera;
+        //[SerializeField] private SpawnStone spawnStone;
+        public GameObject mainCamera;
+        public GameObject plowController;
         public int hitCount = 0;
         public int highScore;
 
         public void Start()
         {
-            spawnStone.Spawn();
+            //spawnStone.Spawn();
         }
 
         private void OnEnable()
@@ -36,7 +37,8 @@ namespace MyGolf
 
         private void CameraFollowStone()
         {
-            
+            mainCamera.GetComponent<FollowStone>().enabled = true;
+            //plowController.SetActive(false);
         }
         
     }

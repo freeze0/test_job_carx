@@ -16,11 +16,16 @@ namespace MyGolf
     {
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
+        [SerializeField] private GameObject stone;
+        [SerializeField] private float _speed = 25;
+        private float speedMod = 10.0f;
         private Rigidbody rb;
-        private float speedDivisor = 5f;
+        private float speedDivisor = 5.0f;
         private Vector3 _cameraOffset = new Vector3(2,0,0);
         private float _positionY;
         private bool isMoving;
+        private Vector3 point;
+        private Vector3 prevPos;
         
         private void Awake()
         {
@@ -30,8 +35,16 @@ namespace MyGolf
 
         private void Update()
         {
+
+            if (Touch.activeFingers.Count == 2)
+            {
+                Touch activeTouch = Touch.activeFingers[0].currentTouch;
+                RotateAroundStone(camera.transform, activeTouch);
+            }
+            
             if (Touch.activeFingers.Count == 1)
             {
+                plow.SetActive(true);
                 Touch activeTouch = Touch.activeFingers[0].currentTouch;
                 _positionY = GetTouchPositionY(activeTouch);
                 isMoving = true;
@@ -54,8 +67,30 @@ namespace MyGolf
         {
             return touch.screenPosition.y;
         }
-        
+
+        private void RotateAroundStone(Transform someTransform, Touch touch)
+        {
+            Transform stoneTransform = stone.transform;
+            
+            Vector3 offset = someTransform.position - stoneTransform .position;
+            if (touch.screenPosition.x > 900)
+            {
+                Quaternion rotation = Quaternion.Euler(0, _speed * Time.deltaTime, 0);
+                offset = rotation * offset;
+            }
+            else
+            {
+                Quaternion rotation = Quaternion.Euler(0, -_speed * Time.deltaTime, 0);
+                offset = rotation * offset;
+            }
+            someTransform.position = stoneTransform.position + offset;
+            someTransform.LookAt(stoneTransform );
+        }
+
+        private void RestartPosition()
+        {
+            
+        }
         
     }
-    
 }
