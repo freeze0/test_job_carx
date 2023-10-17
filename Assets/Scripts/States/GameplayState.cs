@@ -40,7 +40,10 @@ namespace MyGolf
         protected override void OnDisable()
         {
             base.OnDisable();
-            touchPlowController.enabled = false;
+            if (touchPlowController)
+            {
+                touchPlowController.enabled = false;
+            }
             levelController.enabled = false;
             
             GameEvents.onPlowHit -= OnPlowHit;

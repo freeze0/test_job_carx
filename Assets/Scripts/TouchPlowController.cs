@@ -25,7 +25,7 @@ namespace MyGolf
             {
                 plow.SetActive(true);
                 Touch activeTouch = Touch.activeFingers[0].currentTouch;
-                positionY = GetTouchPositionY(activeTouch);
+                positionY = activeTouch.screenPosition.y;
                 isMoving = true;
                 isRestared = false;
             }
@@ -34,8 +34,10 @@ namespace MyGolf
                 isMoving = false;
                 if (!isRestared)
                 {
+                    
                     RestartPosition();
                     isRestared = true;
+                    Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");
                 }
                 
             }
@@ -45,18 +47,14 @@ namespace MyGolf
         {
             if (isMoving)
             {
-                rb.MovePosition(transform.position + camera.transform.forward * Time.deltaTime * positionY / speedDivisor + cameraOffset);
+                rb.MovePosition(camera.transform.position + camera.transform.forward * Time.fixedDeltaTime * positionY / speedDivisor);
             }
+            
         }
-
-        private float GetTouchPositionY(Touch touch)
-        {
-            return touch.screenPosition.y;
-        }
-
+        
         public void RestartPosition()
         {
-            rb.transform.Translate(transform.position - camera.transform.forward * Time.deltaTime);
+            transform.position = camera.transform.position;
         }
     }
 }
