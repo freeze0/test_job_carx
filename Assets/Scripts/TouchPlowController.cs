@@ -8,8 +8,7 @@ namespace MyGolf
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
         private Rigidbody rb;
-        private float speedDivisor = 5.0f;
-        private Vector3 cameraOffset = new Vector3(2,0,0);
+        private float speedDivisor = 5f;
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
@@ -17,6 +16,7 @@ namespace MyGolf
         private void Awake()
         {
             rb = plow.GetComponent<Rigidbody>();
+            plow.transform.position = camera.transform.position;
         }
 
         private void Update()
@@ -34,10 +34,9 @@ namespace MyGolf
                 isMoving = false;
                 if (!isRestared)
                 {
-                    
-                    RestartPosition();
+                    /*RestartPosition();
                     isRestared = true;
-                    Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");
+                    Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");*/
                 }
                 
             }
@@ -54,7 +53,8 @@ namespace MyGolf
         
         public void RestartPosition()
         {
-            transform.position = camera.transform.position;
+            plow.transform.position = camera.transform.position;
+            Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");
         }
     }
 }
