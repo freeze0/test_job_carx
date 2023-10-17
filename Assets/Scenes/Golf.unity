@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 867313193}
-  m_IndirectSpecularColor: {r: 0.13682184, g: 0.14638925, b: 0.15382177, a: 1}
+  m_IndirectSpecularColor: {r: 0.13680217, g: 0.14637119, b: 0.15380487, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6188,6 +6188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   views:
   - {fileID: 348436333}
+  sc: {fileID: 0}
   levelController: {fileID: 1832238222}
   touchPlowController: {fileID: 2037565712}
   gameOverState: {fileID: 1209783693}
@@ -10247,7 +10248,7 @@ MonoBehaviour:
   views:
   - {fileID: 2113421492}
   - {fileID: 312187438}
-  gameplayState: {fileID: 646418037}
+  sc: {fileID: 0}
 --- !u!1001 &1221406527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14304,6 +14305,14 @@ PrefabInstance:
     - target: {fileID: -2251163959524550877, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
       propertyPath: m_Mass
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2251163959524550877, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2251163959524550877, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1290125285081394, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
       propertyPath: m_Name

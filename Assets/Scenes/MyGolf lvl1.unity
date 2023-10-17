@@ -11266,28 +11266,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4835789832631930, guid: bdf8e7438a7816543998181bd3067573, type: 3}
   m_PrefabInstance: {fileID: 1603263753}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1605389459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1290125285081394, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
-  m_PrefabInstance: {fileID: 1635474710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1605389464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4372973593729692, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
   m_PrefabInstance: {fileID: 1635474710}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1605389469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605389459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edab003a7bcd7f340b8be67d167d3bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1617341212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1275909538635612, guid: 2767c12992d890f44b14f433fe854668, type: 3}
@@ -11371,10 +11354,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2251163959524550877, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
-      propertyPath: m_Mass
-      value: 2.55
-      objectReference: {fileID: 0}
     - target: {fileID: 1290125285081394, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
       propertyPath: m_Name
       value: rpgpp_lt_rock_02 1
@@ -11422,10 +11401,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1290125285081394, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1605389469}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54193c01c81cb8489de6172f1f38c10, type: 3}
 --- !u!1 &1638088828 stripped
 GameObject:
