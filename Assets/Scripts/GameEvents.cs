@@ -13,6 +13,8 @@ namespace MyGolf
 
        public static event System.Action onCollisionFinish;
 
+       public static event System.Action onNextLevelPressed;
+
        public static void PlowHit()
        {
            onPlowHit?.Invoke();
@@ -26,6 +28,11 @@ namespace MyGolf
        public static void OnCollisionFinish()
        {
            onCollisionFinish?.Invoke();
+       }
+
+       public static void OnNextLevelPressed()
+       {
+           onNextLevelPressed?.Invoke();
        }
        
     }

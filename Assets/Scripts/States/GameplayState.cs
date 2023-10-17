@@ -10,6 +10,7 @@ namespace MyGolf
     
     public class GameplayState : GameState
     {
+        [SerializeField] private SceneController sc;
         [SerializeField] private LevelController levelController;
         [SerializeField] private TouchPlowController touchPlowController;
         [SerializeField] private GameOverState gameOverState;
@@ -44,6 +45,12 @@ namespace MyGolf
             
             GameEvents.onPlowHit -= OnPlowHit;
             GameEvents.onCollisionFinish -= OnGameEnded;
+        }
+        
+        public void Restart()
+        {
+            sc.ReloadScene();
+            Exit();
         }
     }
 }

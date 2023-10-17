@@ -5,20 +5,31 @@ using UnityEngine;
 
 namespace MyGolf
 {
+   
     public class GameOverState : GameState
     {
-        [SerializeField] private GameplayState gameplayState;
-
+        [SerializeField] private SceneController sc;
         
         protected override void OnEnable()
         {
             base.OnEnable();
         }
-        
-        public void RestartGame()
+
+        protected override void OnDisable()
         {
-            Exit();
-            gameplayState.Enter();
+            base.OnDisable();
+            
         }
+
+        public void LoadNextLevel()
+        {
+            sc.LoadNextScene();
+            Exit();
+            /*mainMenuState.Enter();*/
+        }
+
+        
+        
+        
     }
 }
