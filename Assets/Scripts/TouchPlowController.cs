@@ -1,22 +1,12 @@
-using System;
-using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using Debug = UnityEngine.Debug;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 namespace MyGolf
 {
-    public class TouchController : MonoBehaviour
+    public class TouchPlowController : MonoBehaviour
     {
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
-        [SerializeField] private GameObject stone;
         private Rigidbody rb;
         private float speedDivisor = 5.0f;
         private Vector3 cameraOffset = new Vector3(2,0,0);
@@ -26,7 +16,6 @@ namespace MyGolf
         
         private void Awake()
         {
-            EnhancedTouchSupport.Enable();
             rb = plow.GetComponent<Rigidbody>();
         }
 

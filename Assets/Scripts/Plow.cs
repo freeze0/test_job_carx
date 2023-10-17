@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MyGolf
 {
-    public class PlowController : MonoBehaviour
+    public class Plow : MonoBehaviour
     {
         private void OnCollisionEnter(Collision other)
         {

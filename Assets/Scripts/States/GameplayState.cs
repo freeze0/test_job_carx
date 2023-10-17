@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace MyGolf
@@ -10,16 +11,17 @@ namespace MyGolf
     public class GameplayState : GameState
     {
         [SerializeField] private LevelController levelController;
-        [SerializeField] private TouchController touchController;
+        [SerializeField] private TouchPlowController touchPlowController;
         [SerializeField] private GameOverState gameOverState;
         public TMP_Text scoreText;
         protected override void OnEnable()
         {
             base.OnEnable();
-            touchController.enabled = true;
+            touchPlowController.enabled = true;
             levelController.enabled = true;
             
             GameEvents.onPlowHit += OnPlowHit;
+            GameEvents.onCollisionFinish += OnGameEnded;
             
         }
 
@@ -37,10 +39,11 @@ namespace MyGolf
         protected override void OnDisable()
         {
             base.OnDisable();
-            touchController.enabled = false;
+            touchPlowController.enabled = false;
             levelController.enabled = false;
             
             GameEvents.onPlowHit -= OnPlowHit;
+            GameEvents.onCollisionFinish -= OnGameEnded;
         }
     }
 }

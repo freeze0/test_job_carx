@@ -7,14 +7,8 @@ namespace MyGolf
     {
         [SerializeField] private GameObject mainCamera;
         [SerializeField] private GameObject plowController;
-        [SerializeField] private TouchController tC;
         public int hitCount = 0;
         public int highScore;
-
-        public void Start()
-        {
-            
-        }
 
         private void OnEnable()
         {
@@ -49,6 +43,7 @@ namespace MyGolf
             mainCamera.GetComponent<FollowStone>().enabled = false;
             plowController.SetActive(true);
         }
+        
         
     }
 }
