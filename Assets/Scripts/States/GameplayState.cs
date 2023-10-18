@@ -23,7 +23,6 @@ namespace MyGolf
             
             GameEvents.onPlowHit += OnPlowHit;
             GameEvents.onCollisionFinish += OnGameEnded;
-            GameEvents.onPlowHit += touchPlowController.RestartPosition;
         }
 
         private void OnGameEnded()
@@ -48,7 +47,6 @@ namespace MyGolf
             
             GameEvents.onPlowHit -= OnPlowHit;
             GameEvents.onCollisionFinish -= OnGameEnded;
-            GameEvents.onPlowHit -= touchPlowController.RestartPosition;
         }
         
         public void Restart()

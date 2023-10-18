@@ -1,3 +1,4 @@
+using System;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace MyGolf
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
         private Rigidbody rb;
-        private float speedDivisor = 5f;
+        private float speedDivisor = 8f;
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
@@ -16,7 +17,16 @@ namespace MyGolf
         private void Awake()
         {
             rb = plow.GetComponent<Rigidbody>();
-            plow.transform.position = camera.transform.position;
+        }
+
+        private void OnEnable()
+        {
+            GameEvents.onPlowHit += RestartPosition;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.onPlowHit -= RestartPosition;
         }
 
         private void Update()
@@ -34,11 +44,9 @@ namespace MyGolf
                 isMoving = false;
                 if (!isRestared)
                 {
-                    /*RestartPosition();
+                    RestartPosition();
                     isRestared = true;
-                    Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");*/
                 }
-                
             }
         }
 
@@ -48,13 +56,13 @@ namespace MyGolf
             {
                 rb.MovePosition(camera.transform.position + camera.transform.forward * Time.fixedDeltaTime * positionY / speedDivisor);
             }
-            
         }
         
         public void RestartPosition()
         {
+            plow.SetActive(false);
             plow.transform.position = camera.transform.position;
-            Debug.Log($"restarted to {camera.transform.localPosition - camera.transform.forward}");
+            plow.SetActive(true);
         }
     }
 }

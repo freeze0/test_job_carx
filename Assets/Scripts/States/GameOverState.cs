@@ -25,7 +25,6 @@ namespace MyGolf
         {
             sc.LoadNextScene();
             Exit();
-            /*mainMenuState.Enter();*/
         }
 
         

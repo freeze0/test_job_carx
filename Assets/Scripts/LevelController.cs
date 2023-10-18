@@ -8,7 +8,7 @@ namespace MyGolf
         [SerializeField] private GameObject mainCamera;
         [SerializeField] private GameObject plowController;
         [SerializeField] private GameObject plow;
-        public int hitCount = 0;
+        public int hitCount = 100;
         public int highScore;
 
         private void OnEnable()
