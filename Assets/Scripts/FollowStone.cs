@@ -7,10 +7,11 @@ namespace MyGolf{
     {
         public Transform stone;
         [SerializeField] private Vector3 offset;
-
-        void Update()
+        
+        private void Update()
         {
             transform.position = stone.position + offset;
+            transform.LookAt(stone);
         }
     }
 }

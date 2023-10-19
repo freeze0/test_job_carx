@@ -63,6 +63,7 @@ namespace MyGolf
             plow.SetActive(false);
             plow.transform.position = camera.transform.position;
             plow.SetActive(true);
+            Debug.Log("Position is Restarted");
         }
     }
 }
