@@ -10,7 +10,6 @@ namespace MyGolf
     {
        public static event System.Action onPlowHit;
        public static event System.Action onStoneStop;
-
        public static event System.Action onCollisionFinish;
        
 

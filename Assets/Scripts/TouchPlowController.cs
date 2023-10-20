@@ -13,7 +13,11 @@ namespace MyGolf
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
+        private bool isHere = false;
+        // [SerializeField] Transform myTransform; передвигать на трансформ
         
+
+        // сделать событие когда касаемся ограничивать размах клюшки
         private void Awake()
         {
             rb = plow.GetComponent<Rigidbody>();
@@ -21,19 +25,24 @@ namespace MyGolf
 
         private void OnEnable()
         {
-            GameEvents.onPlowHit += RestartPosition;
+           //GameEvents.onPlowHit += RestartPosition;
         }
 
         private void OnDisable()
         {
             GameEvents.onPlowHit -= RestartPosition;
+            isMoving = false;
+            isRestared = false;
         }
 
         private void Update()
         {
+            if (isHere)
+            {
+                plow.SetActive(false);
+            }
             if (Touch.activeFingers.Count == 1)
             {
-                plow.SetActive(true);
                 Touch activeTouch = Touch.activeFingers[0].currentTouch;
                 positionY = activeTouch.screenPosition.y;
                 isMoving = true;
@@ -60,10 +69,12 @@ namespace MyGolf
         
         public void RestartPosition()
         {
-            plow.SetActive(false);
-            plow.transform.position = camera.transform.position;
-            plow.SetActive(true);
+            //plow.SetActive(false);
+            plow.transform.position = camera.transform.position;  
+            //plow.SetActive(true);
             Debug.Log("Position is Restarted");
         }
+
+
     }
 }

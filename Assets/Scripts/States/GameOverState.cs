@@ -18,7 +18,6 @@ namespace MyGolf
         protected override void OnDisable()
         {
             base.OnDisable();
-            
         }
 
         public void LoadNextLevel()
@@ -26,9 +25,5 @@ namespace MyGolf
             sc.LoadNextScene();
             Exit();
         }
-
-        
-        
-        
     }
 }

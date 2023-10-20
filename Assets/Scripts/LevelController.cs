@@ -16,7 +16,6 @@ namespace MyGolf
             GameEvents.onPlowHit += OnPlowHit;
             GameEvents.onPlowHit += CameraFollowStone;
             GameEvents.onStoneStop += OnStoneStop;
-            
         }
 
         private void OnDisable()
@@ -30,19 +29,18 @@ namespace MyGolf
         {
             hitCount ++;
             highScore = Mathf.Min(highScore, hitCount);
-            
         }
 
         private void CameraFollowStone()
         {
-            mainCamera.GetComponent<FollowStone>().enabled = true;
+            //mainCamera.GetComponent<FollowStone>().enabled = true;
             plowController.SetActive(false);
             plow.SetActive(false);
         }
 
         private void OnStoneStop()
         {
-            mainCamera.GetComponent<FollowStone>().enabled = false;
+            //mainCamera.GetComponent<FollowStone>().enabled = false;
             plowController.SetActive(true);
             plow.SetActive(true);
         }
