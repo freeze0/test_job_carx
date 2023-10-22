@@ -33,18 +33,12 @@ namespace MyGolf
 
         private void CameraFollowStone()
         {
-            //mainCamera.GetComponent<FollowStone>().enabled = true;
             plowController.SetActive(false);
-            plow.SetActive(false);
         }
 
         private void OnStoneStop()
         {
-            //mainCamera.GetComponent<FollowStone>().enabled = false;
             plowController.SetActive(true);
-            plow.SetActive(true);
         }
-        
-        
     }
 }

@@ -4,23 +4,22 @@ using UnityEngine;
 
 namespace MyGolf
 {
-    public class TouchPlowController : MonoBehaviour
-    {
+    public class TouchControllerState : MonoBehaviour
+    {   
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
+        [SerializeField] private Vector3 hitOffset = new Vector3(2f, 1f, -0.15f);
         private Rigidbody rb;
-        private float speedDivisor = 8f;
+        private float speedDivisor = 7.2f;
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
-        private bool isHere = false;
-        // [SerializeField] Transform myTransform; передвигать на трансформ
-        
-
-        // сделать событие когда касаемся ограничивать размах клюшки
+        public GameObject Plow => plow;
         private void Awake()
         {
             rb = plow.GetComponent<Rigidbody>();
+            isRestared = false;
+            plow.SetActive(false);
         }
 
         private void OnEnable()
@@ -36,13 +35,10 @@ namespace MyGolf
         }
 
         private void Update()
-        {
-            if (isHere)
-            {
-                plow.SetActive(false);
-            }
+        {   
             if (Touch.activeFingers.Count == 1)
             {
+                plow.SetActive(true);
                 Touch activeTouch = Touch.activeFingers[0].currentTouch;
                 positionY = activeTouch.screenPosition.y;
                 isMoving = true;
@@ -50,6 +46,7 @@ namespace MyGolf
             }
             else
             {
+                plow.SetActive(false);
                 isMoving = false;
                 if (!isRestared)
                 {
@@ -63,18 +60,14 @@ namespace MyGolf
         {
             if (isMoving)
             {
-                rb.MovePosition(camera.transform.position + camera.transform.forward * Time.fixedDeltaTime * positionY / speedDivisor);
+                rb.MovePosition(camera.transform.position + hitOffset + camera.transform.forward * Time.fixedDeltaTime * positionY / speedDivisor);
             }
         }
         
         public void RestartPosition()
         {
-            //plow.SetActive(false);
             plow.transform.position = camera.transform.position;  
-            //plow.SetActive(true);
             Debug.Log("Position is Restarted");
-        }
-
-
+        }   
     }
 }
