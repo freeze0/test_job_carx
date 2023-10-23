@@ -16,9 +16,6 @@ namespace MyGolf
         [SerializeField] private LevelController levelController;
         [SerializeField] private GameOverState gameOverState;
         [SerializeField] private List<GameObject> States;
-        private GameObject current;
-        private GameObject prev;
-        private int currentState = 0;
         public TMP_Text scoreText;
         protected override void OnEnable()
         {
@@ -65,7 +62,6 @@ namespace MyGolf
             {
                 if (States[i].activeSelf)
                 {
-                    Debug.Log($"Active state: {States[i]}");
                     if (i == States.Count - 1)
                     {
                         States[0].SetActive(true);

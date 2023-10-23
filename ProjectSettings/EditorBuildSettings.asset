@@ -10,8 +10,5 @@ EditorBuildSettings:
     guid: 3376f875aa0f2f1479d9aadcdb2ece29
   - enabled: 1
     path: Assets/Scenes/MyGolf lvl2.unity
-    guid: 274a4d24de4ac4245a52ac3606dd8aad
-  - enabled: 1
-    path: Assets/Scenes/MyGolf lvl3.unity
-    guid: 8f3e5842001a5db478f999a8e09b62da
+    guid: 08ba82ddd3ed535428e4a5be4a75cbed
   m_configObjects: {}

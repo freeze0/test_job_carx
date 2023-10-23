@@ -11,7 +11,6 @@ namespace MyGolf
         {
             if (other.collider.CompareTag("Stone"))
             {
-                Debug.Log("i Hit the stone");
                 GameEvents.PlowHit();
             }
         }

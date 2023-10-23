@@ -16,7 +16,10 @@ namespace MyGolf{
         protected override void OnDisable()
         {
             base.OnDisable();
-            camFollow.enabled = false;
+            if (camFollow)
+            {
+                camFollow.enabled = false;
+            }
         }
         
     }

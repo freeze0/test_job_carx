@@ -13,7 +13,7 @@ namespace MyGolf
         [SerializeField] private Camera camera;
         [SerializeField] private Vector3 hitOffset = new Vector3(2f, 1f, -0.15f);
         private Rigidbody rb;
-        private float speedDivisor = 7.2f;
+        private float speedDivisor = 6.75f;
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
@@ -36,6 +36,7 @@ namespace MyGolf
         private void OnDisable()
         {
             isMoving = false;
+            RestartPosition();
             isRestared = false;
         }
 
@@ -72,7 +73,6 @@ namespace MyGolf
         private void RestartPosition()
         {
             plow.transform.position = camera.transform.position;  
-            Debug.Log("Position is Restarted");
         }
     }
 }

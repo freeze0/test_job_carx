@@ -28,7 +28,6 @@ namespace MyGolf
                 {
                     isStopped = true;
                     GameEvents.OnStoneStop();
-                    Debug.Log("Stone Stop");
                 }
             }
         }
