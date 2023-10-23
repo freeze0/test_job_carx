@@ -1,11 +1,13 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using UnityEngine;
 
 namespace MyGolf
 {
-    public class TouchControllerState : MonoBehaviour
-    {   
+    public class PlowController : MonoBehaviour
+    {
+        
         [SerializeField] private GameObject plow;
         [SerializeField] private Camera camera;
         [SerializeField] private Vector3 hitOffset = new Vector3(2f, 1f, -0.15f);
@@ -22,14 +24,8 @@ namespace MyGolf
             plow.SetActive(false);
         }
 
-        private void OnEnable()
-        {
-           //GameEvents.onPlowHit += RestartPosition;
-        }
-
         private void OnDisable()
         {
-            GameEvents.onPlowHit -= RestartPosition;
             isMoving = false;
             isRestared = false;
         }
@@ -64,10 +60,10 @@ namespace MyGolf
             }
         }
         
-        public void RestartPosition()
+        private void RestartPosition()
         {
             plow.transform.position = camera.transform.position;  
             Debug.Log("Position is Restarted");
-        }   
+        }
     }
 }

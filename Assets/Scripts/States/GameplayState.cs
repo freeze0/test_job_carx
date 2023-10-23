@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -13,26 +14,21 @@ namespace MyGolf
     {
         [SerializeField] private SceneController sc;
         [SerializeField] private LevelController levelController;
-        [FormerlySerializedAs("touchPlowController")] [SerializeField] private TouchControllerState touchControllerState;
         [SerializeField] private GameOverState gameOverState;
-        [FormerlySerializedAs("camRotate")] [SerializeField] private CameraRotateState camRotateState;
-        [SerializeField] private FollowStone camFollow;
-        [SerializeField] private Button shootButton;
-        [SerializeField] private Button cancelButton;
+        [SerializeField] private List<GameObject> States;
+        [SerializeField] private LinkedList<GameObject> States1;
+        private GameObject current;
+        private GameObject prev;
+        private int currentState = 0;
         public TMP_Text scoreText;
         protected override void OnEnable()
         {
             base.OnEnable();
-            camFollow.enabled = false;
-            camRotateState.enabled = true;
-            touchControllerState.enabled = false;
+            States[0].SetActive(true);
             levelController.enabled = true;
-            cancelButton.gameObject.SetActive(false);
-            shootButton.gameObject.SetActive(true);
-            touchControllerState.Plow.SetActive(false);
             GameEvents.onPlowHit += OnPlowHit;
             GameEvents.onCollisionFinish += OnGameEnded;
-            GameEvents.onStoneStop += OnStoneStopUI;
+            GameEvents.onStoneStop += OnStoneStop;
         }
 
         private void OnGameEnded()
@@ -43,39 +39,57 @@ namespace MyGolf
 
         private void OnPlowHit()
         {
-            camFollow.enabled = true;
             StateChanger();
-            shootButton.gameObject.SetActive(false);
             scoreText.text = $"score : {levelController.hitCount}";
         }
 
-        private void OnStoneStopUI()
+        private void OnStoneStop()
         {
-            camFollow.enabled = false;
-            if (camRotateState.enabled == true)
-            {
-                shootButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                shootButton.gameObject.SetActive(false);
-            }
+            StateChanger();
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            if (touchControllerState)
-            {
-                touchControllerState.enabled = false;
-            }
-            if ( levelController)
+            if (levelController)
             {
                 levelController.enabled = false;
             }   
             GameEvents.onPlowHit -= OnPlowHit;
             GameEvents.onCollisionFinish -= OnGameEnded;
-            GameEvents.onStoneStop -= OnStoneStopUI;
+            GameEvents.onStoneStop -= OnStoneStop;
+        }
+
+        private void StateChanger()
+        {
+            for (int i = 0; i < States.Count; i++)
+            {
+                if (States[i].activeSelf)
+                {
+                    Debug.Log($"Active state: {States[i]}");
+                    if (i == States.Count + 1)
+                    {
+                        States[0].SetActive(true);
+                    }
+                    else
+                    {
+                        States[i + 1].SetActive(true);
+                    }
+                    States[i].SetActive(false);
+                    return;
+                }
+            }
+        }
+
+        public void Cancel()
+        {
+            States[0].SetActive(true);
+            States[1].SetActive(false);
+        }
+
+        public void Shoot()
+        {
+            StateChanger();
         }
         
         public void Restart()
@@ -83,22 +97,5 @@ namespace MyGolf
             sc.ReloadScene();
             Exit();
         }
-
-        public void StateChanger()
-        {
-            camRotateState.enabled = !camRotateState.enabled;
-            touchControllerState.enabled = !touchControllerState.enabled;
-            shootButton.gameObject.SetActive(camRotateState.enabled); 
-            cancelButton.gameObject.SetActive(touchControllerState.enabled);
-            if (camRotateState.enabled)
-            {
-                touchControllerState.Plow.SetActive(false);
-            }
-            else
-            {
-                touchControllerState.Plow.SetActive(true);
-            }
-        }
-        
     }
 }

@@ -1,21 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
-using UnityEngine.UI;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace MyGolf
 {
-    public class CameraRotateState : MonoBehaviour
+    public class CameraRotate : MonoBehaviour
     {
-        
         [SerializeField] private Transform stone;
         [SerializeField] private float camSpeed = 10f;
         [SerializeField] private float camSpeedMultiplier = 4f;
         [SerializeField] private RectTransform shootButton;
-        private Quaternion currentRotation;
         private float halfScreen = Screen.width / 2.0f;
         
         private void Update()
