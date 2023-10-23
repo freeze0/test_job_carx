@@ -21,7 +21,10 @@ namespace MyGolf
         protected override void OnDisable()
         {
             base.OnDisable();
-            camRot.enabled = false;
+            if (camRot)
+            {
+                camRot.enabled = false;
+            }
         }
         
         

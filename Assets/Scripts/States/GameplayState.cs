@@ -16,7 +16,6 @@ namespace MyGolf
         [SerializeField] private LevelController levelController;
         [SerializeField] private GameOverState gameOverState;
         [SerializeField] private List<GameObject> States;
-        [SerializeField] private LinkedList<GameObject> States1;
         private GameObject current;
         private GameObject prev;
         private int currentState = 0;
@@ -67,7 +66,7 @@ namespace MyGolf
                 if (States[i].activeSelf)
                 {
                     Debug.Log($"Active state: {States[i]}");
-                    if (i == States.Count + 1)
+                    if (i == States.Count - 1)
                     {
                         States[0].SetActive(true);
                     }

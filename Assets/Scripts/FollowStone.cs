@@ -12,7 +12,8 @@ namespace MyGolf
         private void Update()
         {
             transform.position = stone.position + offset;
-            transform.LookAt(stone);
+            Debug.Log(transform.forward);
+            //transform.LookAt(stone);
         }
 
     }

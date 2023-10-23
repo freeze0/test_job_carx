@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -16,12 +17,20 @@ namespace MyGolf
         private float positionY;
         private bool isMoving;
         private bool isRestared = false;
+        private Vector3 newRotation = new Vector3(0.0f, 0.0f, 0.0f);
         public GameObject Plow => plow;
+        
         private void Awake()
         {
             rb = plow.GetComponent<Rigidbody>();
             isRestared = false;
             plow.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            Quaternion _newRot = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 180);
+            plow.transform.rotation = _newRot;
         }
 
         private void OnDisable()

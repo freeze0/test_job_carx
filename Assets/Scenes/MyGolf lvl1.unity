@@ -1839,7 +1839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &237210362
 Transform:
   m_ObjectHideFlags: 0
@@ -1848,12 +1848,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237210361}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 717326653}
+  m_Father: {fileID: 1573455535298532544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &237210363
 MonoBehaviour:
@@ -1867,9 +1867,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768ab6bcb76180a4282346823633e2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  views:
+  - {fileID: 961244223}
+  plowController: {fileID: 2037565711}
   plow: {fileID: 1876439938}
-  camera: {fileID: 7741193257874633580}
-  hitOffset: {x: 2, y: 1, z: -0.15}
 --- !u!1001 &237711192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4385,7 +4386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &592797937
 Transform:
   m_ObjectHideFlags: 0
@@ -4394,12 +4395,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592797936}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 717326653}
+  m_Father: {fileID: 1573455535298532544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &592797938
 MonoBehaviour:
@@ -4413,10 +4414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65a40424e0c99346b82bcc18d39ed57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stone: {fileID: 1605389464}
-  camSpeed: 10
-  camSpeedMultiplier: 4
-  shootButton: {fileID: 745763647}
+  views:
+  - {fileID: 745763646}
+  - {fileID: 2058891995}
+  camRot: {fileID: 8965266668555079784}
 --- !u!1001 &596709211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5075,11 +5076,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8135307, y: 1.989008, z: 0.53095275}
   m_Center: {x: 0.0000024676772, y: 0.888711, z: -0.0044134445}
---- !u!4 &717326653 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7156551829567995777, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
-  m_PrefabInstance: {fileID: 1573455535298532543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &737206809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5227,7 +5223,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 646418037}
         m_TargetAssemblyTypeName: MyGolf.GameplayState, Assembly-CSharp
-        m_MethodName: StateChanger
+        m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6262,52 +6258,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5908927168535840907, guid: 555aa49bf42b4234ca87d96f604338bd, type: 3}
   m_PrefabInstance: {fileID: 885835523}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &888330266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 888330268}
-  - component: {fileID: 888330267}
-  m_Layer: 0
-  m_Name: CameraController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &888330267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888330266}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca53abb634fbe847bc953f2284df16d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camRotateState: {fileID: 0}
-  camFollow: {fileID: 0}
---- !u!4 &888330268
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888330266}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.760517, y: -65.37667, z: -2.4855714}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &908110639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6656,7 +6606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 646418037}
         m_TargetAssemblyTypeName: MyGolf.GameplayState, Assembly-CSharp
-        m_MethodName: StateChanger
+        m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10694,7 +10644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1620051948
 Transform:
   m_ObjectHideFlags: 0
@@ -10703,12 +10653,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620051947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 717326653}
+  m_Father: {fileID: 1573455535298532544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1620051949
 MonoBehaviour:
@@ -10722,8 +10672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35741307b1207b1409a3231bcfcef0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stone: {fileID: 1605389464}
-  offset: {x: 0, y: 0, z: 0}
+  views:
+  - {fileID: 2058891995}
+  camFollow: {fileID: 8965266668555079785}
 --- !u!1 &1638088828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7848397493806695775, guid: c86589473eb08e040b9078d832a2d4b3, type: 3}
@@ -13367,6 +13318,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5443740084094504997, guid: 6c4c1ef4db4010f41aed549be69aabb5, type: 3}
   m_PrefabInstance: {fileID: 872014400607813976}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037565711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037565710}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d591bf3bc82835e43b934e9802dd40cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plow: {fileID: 1876439938}
+  camera: {fileID: 7741193257874633580}
+  hitOffset: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &2053064194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13934,7 +13900,10 @@ PrefabInstance:
     - {fileID: 9101380022458330172, guid: 6c4c1ef4db4010f41aed549be69aabb5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5443740084094504997, guid: 6c4c1ef4db4010f41aed549be69aabb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2037565711}
   m_SourcePrefab: {fileID: 100100000, guid: 6c4c1ef4db4010f41aed549be69aabb5, type: 3}
 --- !u!1001 &981685529246090088
 PrefabInstance:
@@ -14042,6 +14011,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1832238222}
     - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+      propertyPath: States.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
       propertyPath: touchPlowController
       value: 
       objectReference: {fileID: 0}
@@ -14053,6 +14026,18 @@ PrefabInstance:
       propertyPath: views.Array.data[1]
       value: 
       objectReference: {fileID: 2058891995}
+    - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+      propertyPath: States.Array.data[0]
+      value: 
+      objectReference: {fileID: 592797936}
+    - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+      propertyPath: States.Array.data[1]
+      value: 
+      objectReference: {fileID: 237210361}
+    - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+      propertyPath: States.Array.data[2]
+      value: 
+      objectReference: {fileID: 1620051947}
     - target: {fileID: 5894502014094338419, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
       propertyPath: touchControllerState
       value: 
@@ -14128,17 +14113,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7156551829567995777, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3632683886962981257, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 592797937}
-    - targetCorrespondingSourceObject: {fileID: 7156551829567995777, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3632683886962981257, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 237210362}
-    - targetCorrespondingSourceObject: {fileID: 7156551829567995777, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3632683886962981257, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1620051948}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+--- !u!4 &1573455535298532544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3632683886962981257, guid: 6720666a2dba5a84985ef442b9c11bf9, type: 3}
+  m_PrefabInstance: {fileID: 1573455535298532543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2532933230583240803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16621,15 +16611,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2728306578926858670, guid: 58cd754c3dde1f944a2d86bd93a982bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.53001
+      value: 98.32
       objectReference: {fileID: 0}
     - target: {fileID: 2728306578926858670, guid: 58cd754c3dde1f944a2d86bd93a982bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.62
+      value: 23.27
       objectReference: {fileID: 0}
     - target: {fileID: 2728306578926858670, guid: 58cd754c3dde1f944a2d86bd93a982bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 54.29
+      value: 54.37
       objectReference: {fileID: 0}
     - target: {fileID: 2728306578926858670, guid: 58cd754c3dde1f944a2d86bd93a982bb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16864,6 +16854,8 @@ GameObject:
   - component: {fileID: 2532933230583240803}
   - component: {fileID: 5737301181215628012}
   - component: {fileID: 8084897054200132942}
+  - component: {fileID: 8965266668555079784}
+  - component: {fileID: 8965266668555079785}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17030,13 +17022,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7090945087175686410}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.13307703, y: 0.69795305, z: -0.1344741, w: -0.69070166}
   m_LocalPosition: {x: 99.66, y: 23.49, z: 54.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &8965266668555079784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090945087175686410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca24d2e16cf7bd44b0525683148106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stone: {fileID: 1605389464}
+  camSpeed: 10
+  camSpeedMultiplier: 4
+  shootButton: {fileID: 745763647}
+--- !u!114 &8965266668555079785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090945087175686410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8258b0614dd9d2489b056f4e76bda49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 2, y: 1.15, z: 0}
+  stone: {fileID: 1605389464}
 --- !u!1001 &8985949978075615875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17116,4 +17138,3 @@ SceneRoots:
   - {fileID: 3326211437630604127}
   - {fileID: 872014400607813976}
   - {fileID: 5461248104804954830}
-  - {fileID: 888330268}
